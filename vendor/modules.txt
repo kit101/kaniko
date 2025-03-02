@@ -830,6 +830,9 @@ github.com/karrick/godirwalk
 # github.com/kevinburke/ssh_config v1.2.0
 ## explicit
 github.com/kevinburke/ssh_config
+# github.com/kit101/docker-credential-env v1.0.0 => /Users/k7kit/workspace/opensource/github.com/kit101/docker-credential-env
+## explicit; go 1.22.0
+github.com/kit101/docker-credential-env/pkg/helper
 # github.com/klauspost/compress v1.17.4
 ## explicit; go 1.19
 github.com/klauspost/compress

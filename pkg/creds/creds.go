@@ -24,6 +24,8 @@ import (
 	gitlab "github.com/ePirat/docker-credential-gitlabci/pkg/credhelper"
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/v1/google"
+	env "github.com/kit101/docker-credential-env/pkg/helper"
+	"github.com/sirupsen/logrus"
 )
 
 // GetKeychain returns a keychain for accessing container registries.
@@ -34,5 +36,6 @@ func GetKeychain() authn.Keychain {
 		authn.NewKeychainFromHelper(ecr.NewECRHelper(ecr.WithLogger(io.Discard))),
 		authn.NewKeychainFromHelper(credhelper.NewACRCredentialsHelper()),
 		authn.NewKeychainFromHelper(gitlab.NewGitLabCredentialsHelper()),
+		authn.NewKeychainFromHelper(env.Helper(env.Config{EnvPrefix: "KANIKO_CRED"}, logrus.StandardLogger())),
 	)
 }
